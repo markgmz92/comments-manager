@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import axios from 'axios';
-import Comments from '../components/Comments';
 
 const PostPage = () => {
   const { id } = useParams();
   const [post, setPost] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -18,6 +18,17 @@ const PostPage = () => {
     };
     fetchPost();
   }, [id]);
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      const { data } = await axios.get(
+        'https://jsonplaceholder.typicode.com/comments?=postId'
+      );
+      console.log(comments);
+      setComments(data);
+    };
+    fetchComments();
+  }, []);
 
   return (
     <>
@@ -31,8 +42,13 @@ const PostPage = () => {
         <p>{post.body}</p>
         <div>
           <h3>This is the comments section</h3>
-
-          <Comments />
+          {comments.map((comment) => (
+            <div key={comment.post_id}>
+              <p>Name: {comment.name}</p>
+              <p>Email: {comment.email}</p>
+              <p>Comment: {comment.body}</p>
+            </div>
+          ))}
         </div>
       </div>
     </>
