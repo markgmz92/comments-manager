@@ -20,7 +20,7 @@ const Comments = () => {
       <h4>List of All Comments</h4>
       <Search />
       {comments.map((comments) => (
-        <div className='comments_conainter' key={comments.Postid}>
+        <div className='comments_conainter' key={comments.id}>
           <div className='comments_name'>
             <h4>Name: {comments.name}</h4>
           </div>
