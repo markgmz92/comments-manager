@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.home-container {
+  margin: 4vh 0.5vw;
+}
+
+.posts-container {
+  margin: 0 0.5vw;
+  width: 40%;
+}
+
+.post-page {
+  margin: 40px 20px;
+}
+
+.post-page h2 {
+  margin: 2vh 0.5vw;
+}
+.post-page p {
+  width: 40%;
+  margin: 2vh 0.5vw;
+}
+
+.comments-section h3 {
+  margin: 2vh 0.5vw;
+}
+.comments_section p {
+  width: 40%;
+}
+
+input {
+  margin: 1vh 0.5vw;
+}

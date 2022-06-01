@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Post from '../components/Post';
 
@@ -7,18 +6,19 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const { data } = await axios.get(
-        'https://jsonplaceholder.typicode.com/posts?_limit=10'
+      const response = await fetch(
+        'https://jsonplaceholder.typicode.com/posts?_limit=20'
       );
-      setPosts(data);
+      const postsData = await response.json();
+      setPosts(postsData);
     };
     fetchPosts();
   }, []);
   return (
-    <div className='home_container'>
+    <div className='home-container'>
       <h1>List of All Posts</h1>
       {posts.map((post) => (
-        <div classname='posts_container' key={post.id}>
+        <div className='posts-container' key={post.id}>
           <Post post={post} />
         </div>
       ))}
